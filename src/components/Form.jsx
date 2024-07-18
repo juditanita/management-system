@@ -72,7 +72,7 @@ const Form = () => {
         <input
           type="time"
           id="appt"
-          name="appt"
+          name="time"
           min="09:00"
           max="24:00"
           className="p-2 text-base  focus:outline-none"
@@ -84,7 +84,7 @@ const Form = () => {
         <input
           className="join-item btn"
           type="radio"
-          name="options"
+          name="active"
           aria-label="Active"
           onChange={setFormData}
         />
