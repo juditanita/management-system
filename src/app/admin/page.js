@@ -1,28 +1,38 @@
+"use client";
+
 // import Alert from "@/components/alert/Alert";
 // import Error from "@/components/alert/Error";
 import Badge from "@/components/buttons/Badge";
 import Delete from "@/components/buttons/Delete";
 import Edit from "@/components/buttons/Edit";
+import { useReducer } from "react";
+import { formReducer } from "@/allFunctions";
 // import Loading from "@/components/buttons/Loading";
 
 const AdminDashboard = () => {
+  const [formData, setFormData] = useReducer(formReducer, {});
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(formData);
+  }
   return (
     <section>
       {/* <Alert/>
 <Error/>
 <Loading/> */}
 
-      <details className="collapse bg-slate-50 mb-10 rounded-none mt-20">
-        <summary className="collapse-title text-xl font-medium hover:font-semibold drop-shadow-md px-12">
+      <div className=" bg-slate-50 mb-10 rounded-none mt-20">
+        <p className="collapse-title text-xl font-medium hover:font-semibold drop-shadow-md px-12">
           Add New
-        </summary>
+        </p>
 
         <form
           action=""
-          className="bg-pink-100 shadow-md collapse-content p-4 w-1/2 mx-auto mb-20 mt-12 gap-6 flex flex-col"
+          className="bg-pink-100 shadow-md  p-4 w-1/2 mx-auto mb-20 mt-12 gap-6 flex flex-col"
         >
-          <div className="flex justify-between ">
-            <div className="flex  items-center form-group gap-2 p-4 pl-0 w-full">
+          <div className="flex justify-between  flex-col lg:flex-row">
+            <div className="flex flex-wrap  items-center form-group gap-2 p-4 pl-0 ">
               <label htmlFor="occasion">Occation</label>
               <input
                 id="occasion"
@@ -30,29 +40,34 @@ const AdminDashboard = () => {
                 name="occasion"
                 placeholder="e.g.day trip"
                 className="p-2 text-base text-orange-700 focus:outline-none"
+                onChange={setFormData}
               />
             </div>
 
-            <div className="flex  items-center form-group gap-2 p-4 w-full">
+            <div className="flex  items-center form-group gap-2 p-4 pl-0 flex-wrap">
               <label htmlFor="destination">Destination</label>
               <input
                 id="destination"
                 type="text"
+                placeholder="e.g. Tarifa"
                 name="destination"
                 className="p-2 text-base text-orange-700 focus:outline-none"
+                onChange={setFormData}
               />
             </div>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 ">
             <label htmlFor="address">Address</label>
             <textarea
               name="address"
               id=""
               className="p-2 resize-none text-base text-orange-700 focus:outline-none"
               rows="4"
+              placeholder="City, Street, ZipCode.."
+              onChange={setFormData}
             ></textarea>
           </div>
-          <div className="flex justify-between ">
+          <div className="flex justify-between flex-wrap">
             <div className="flex  items-center form-group gap-2 p-4 pl-0 w-full">
               <label htmlFor="destination">Date</label>
               <input
@@ -60,10 +75,11 @@ const AdminDashboard = () => {
                 type="date"
                 name="date"
                 className="p-2 text-base text-orange-700 focus:outline-none"
+                onChange={setFormData}
               />
             </div>
             <div className="flex  items-center form-group gap-2 p-4 pl-0 w-full">
-              <label for="appt">Time</label>
+              <label htmlFor="appt">Time</label>
 
               <input
                 type="time"
@@ -72,26 +88,38 @@ const AdminDashboard = () => {
                 min="09:00"
                 max="24:00"
                 className="p-2 text-base text-orange-700 focus:outline-none"
+                onChange={setFormData}
               />
             </div>
 
-            <div className="join mt-4">
+            <div className="join mt-4 ml-auto mr-2">
               <input
                 className="join-item btn"
                 type="radio"
                 name="options"
                 aria-label="Active"
+                onChange={setFormData}
               />
               <input
                 className="join-item btn"
                 type="radio"
                 name="options"
                 aria-label="Inactive"
+                onChange={setFormData}
               />
             </div>
           </div>
+          <div className="grid place-content-evenly">
+            {" "}
+            <button
+              className="bg-green-600 px-6 rounded py-3 hover:ring-4 ring-emerald-100 hover:shadow-md  text-green-50  text-center"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          </div>
         </form>
-      </details>
+      </div>
 
       <div className="overflow-x-auto  border mx-8">
         <table className="table">
