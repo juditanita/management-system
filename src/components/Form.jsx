@@ -56,7 +56,7 @@ const Form = () => {
       ></textarea>
     </div>
     <div className="flex justify-between flex-wrap">
-      <div className="flex  items-center  gap-2 p-4 pl-0 w-full">
+      {/* <div className="flex  items-center  gap-2 p-4 pl-0 w-full">
         <label htmlFor="destination">Date</label>
         <input
           id="destination"
@@ -78,9 +78,9 @@ const Form = () => {
           className="p-2 text-base  focus:outline-none"
           onChange={setFormData}
         />
-      </div>
+      </div> */}
 
-      <div className="join mt-4 ml-auto mr-2">
+      {/* <div className="join mt-4 ml-auto mr-2">
         <input
           className="join-item btn"
           type="radio"
@@ -95,7 +95,7 @@ const Form = () => {
           aria-label="Inactive"
           onChange={setFormData}
         />
-      </div>
+      </div> */}
     </div>
     <div className="grid place-content-evenly">
     
