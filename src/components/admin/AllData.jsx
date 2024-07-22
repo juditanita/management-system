@@ -1,28 +1,10 @@
 "use client";
 import Delete from "@/components/buttons/Delete";
 import Edit from "@/components/buttons/Edit";
+import { getAllEvents } from "@/fetchingFunctions";
 import { useEffect, useState } from "react";
 
-const getAllEvents = async () => {
-  try {
-    const res = await fetch(
-      "http://localhost:3000/api/events",
 
-      {
-        cache: "no-store",
-      }
-    );
-    if (!res.ok) {
-      throw new Error("Failed to load data");
-    }
-
-    const result = res.json();
-
-    return result;
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 const AllData = () => {
   const [events, setEventsAll] = useState(null);
@@ -62,7 +44,8 @@ const AllData = () => {
 
                   <td>
                     <Delete />
-                    <Edit />
+                    <Edit 
+                     />
                   </td>
                 </tr>
               );
