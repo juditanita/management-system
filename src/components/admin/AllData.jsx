@@ -37,14 +37,14 @@ const AllData = () => {
             events?.map((ev) => {
               const { occasion, destination, address } = ev;
               return (
-                <tr>
+                <tr key={ev._id}>
                   <td>{occasion}</td>
                   <td>{destination}</td>
                   <td>{address}</td>
 
                   <td>
                     <Delete />
-                    <Edit 
+                    <Edit id={ev._id}
                      />
                   </td>
                 </tr>
