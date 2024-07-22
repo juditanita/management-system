@@ -35,3 +35,5 @@ export const getDay = (date) => {
   ];
   return daysOfTheWeek[date.getDay()];
 };
+
+

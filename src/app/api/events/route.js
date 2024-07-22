@@ -23,8 +23,10 @@ export async function POST(req){
 }
 
 export async function GET(){
+   
     await dbConnect();
-    const eventList = await Events.find();
+    const eventList = await Events.find().lean();
+    
     return NextResponse.json({
         eventList})
 }
