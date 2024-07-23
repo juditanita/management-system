@@ -1,3 +1,4 @@
+'use client'
 import { useReducer } from "react";
 import { formReducer } from "@/allFunctions";
 import { GoPlus } from "react-icons/go";

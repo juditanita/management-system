@@ -11,7 +11,7 @@ const AllData = () => {
 
   useEffect(() => {
     getAllEvents().then((data) => {
-      console.log(data.eventList);
+      // console.log(data.eventList);
       setEventsAll(data.eventList);
     });
   }, []);

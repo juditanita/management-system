@@ -1,12 +1,20 @@
 'use client'
  
+import Link from 'next/link';
 import { useParams } from 'next/navigation'
+import { RiHome2Line } from "react-icons/ri";
 
 const EditEvent = () => {
     const params = useParams();
     console.log(params);
   return (
-    
+    <section>
+    <div>
+<Link href={"/admin"}
+>
+     <p className='flex px-8 py-6 items-center justify-center w-1/3 gap-4 border-2'>Admin <RiHome2Line size={25} /></p>
+     </Link>
+    </div>
     <form
     action=""
     className="bg-sky-600 shadow-md  p-4 w-1/2 mx-auto mb-20 mt-12 gap-6 flex flex-col"
@@ -99,6 +107,7 @@ const EditEvent = () => {
       </button>
     </div>
   </form>
+  </section>
   )
 }
 
