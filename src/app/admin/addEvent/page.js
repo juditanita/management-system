@@ -1,35 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-const initialState = {
-  occasion: "",
-  destination: "",
-  address: "",
-};
+import { useForm } from "react-hook-form";
 
+import { GoPlus } from "react-icons/go";
 
+const initialValue ={
+    destination:"",
+    occasion:"",
+    address:""
+}
 
 const AddEvent = () => {
-  const [form, setFormData] = useState(initialState);
+const router = useRouter();
 
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const {
+    register,
+    handleSubmit, 
+  
+
+    formState: { errors, isSubmitSuccessful },
+    reset,
+  } = useForm({defaultValues:initialValue});
+
+
+
+  async function onSubmit(data) {
+    
+  
+    try {
+      const res = await fetch("http://localhost:3000/api/events", {
+        method: "POST",
+        header: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        throw new Error("Error occured while fetching" + res.status);
+      }
+     reset();
+      router.push("/admin")
+    } catch (error) {
+      throw new Error("Error occured while submiting the data");
+    }
   }
 
-
-  function handleSubmit(event){
-    event.preventDefault();
-  }
   return (
     <form
       action=""
       className="bg-sky-600 shadow-md  p-4 w-1/2 mx-auto mb-20 mt-12 gap-6 flex flex-col"
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex justify-between  flex-col lg:flex-row">
         <div className="flex flex-wrap  items-center  gap-2 p-4 pl-0 ">
@@ -37,12 +60,18 @@ const AddEvent = () => {
           <input
             id="occasion"
             type="text"
-            name="occasion"
-            value={form.occasion}
-            placeholder="e.g.day trip"
+           placeholder=" e.g Gala"
             className="p-2 text-base  focus:outline-none  bg-white focus:bg-white"
-            onChange={handleChange}
+            {...register("occasion", {
+              required: true,
+              minLength: {
+                value: 3,
+                message: "Please add at least 3 characters",
+              },
+            })}
           />
+
+          {errors.occasion && <p>{errors.occasion.message}</p>}
         </div>
 
         <div className="flex  items-center  gap-2 p-4 pl-0 flex-wrap">
@@ -50,25 +79,35 @@ const AddEvent = () => {
           <input
             id="destination"
             type="text"
-            value={form.destination}
             placeholder="e.g. Tarifa"
-            name="destination"
+            {...register("destination", {
+              required: true,
+              minLength: {
+                value: 3,
+                message: "Please add at least 3 characters",
+              },
+            })}
             className="p-2 text-base  focus:outline-none"
-            onChange={handleChange}
           />
+            {errors.destination && <p>{errors.destination.message}</p>}
         </div>
       </div>
       <div className="flex flex-col gap-2 ">
         <label htmlFor="address">Address</label>
         <textarea
-          name="address"
+          {...register("address", {
+            required: true,
+            minLength: {
+              value: 8,
+              message: "Please add at least 8 characters",
+            },
+          })}
           id=""
           className="p-2 resize-none text-base  focus:outline-none"
           rows="4"
-          value={form.address}
           placeholder="City, Street, ZipCode.."
-          onChange={handleChange}
         ></textarea>
+          {errors.address && <p>{errors.address.message}</p>}
       </div>
       <div className="flex justify-between flex-wrap">
         {/* <div className="flex  items-center  gap-2 p-4 pl-0 w-full">
@@ -115,10 +154,11 @@ const AddEvent = () => {
       <div className="grid place-content-evenly">
         <button
           className="bg-black flex hover:bg-neutral-50 hover:text-black  justify-center items-center flex-grow px-6 rounded py-3 hover:ring-4 ring-sky-200 hover:shadow-md  text-green-50  text-center"
-          onClick={handleSubmit}
+          
         >
           Add <GoPlus size={25} />
         </button>
+        {isSubmitSuccessful && <p>New event added</p>}
       </div>
     </form>
   );
