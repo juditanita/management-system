@@ -42,7 +42,7 @@ const router = useRouter();
         throw new Error("Error occured while fetching" + res.status);
       }
      reset();
-      router.push("/admin")
+     router.back();
     } catch (error) {
       throw new Error("Error occured while submiting the data");
     }

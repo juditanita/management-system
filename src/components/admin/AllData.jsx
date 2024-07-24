@@ -43,7 +43,7 @@ const AllData = () => {
                   <td>{address}</td>
 
                   <td>
-                    <Delete />
+                    <Delete  id={ev._id}/>
                     <Edit id={ev._id}
                      />
                   </td>
