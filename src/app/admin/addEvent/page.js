@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { GoPlus } from "react-icons/go";
 
 const initialValue ={
-    destination:"",
+    details:"",
     occasion:"",
     address:""
 }
@@ -20,7 +20,7 @@ const router = useRouter();
     handleSubmit, 
   
 
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful, isSubmitting },
     reset,
   } = useForm({defaultValues:initialValue});
 
@@ -51,19 +51,19 @@ const router = useRouter();
   return (
     <form
       action=""
-      className="bg-sky-600 shadow-md  p-4 w-1/2 mx-auto mb-20 mt-12 gap-6 flex flex-col"
+      className="bg-sky-100 shadow-md  p-4 w-1/2 mx-auto mb-20 mt-12 gap-6 flex flex-col"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex justify-between  flex-col lg:flex-row">
         <div className="flex flex-wrap  items-center  gap-2 p-4 pl-0 ">
-          <label htmlFor="occasion">Occation</label>
+          <label htmlFor="occasion" >Occation</label>
           <input
             id="occasion"
             type="text"
            placeholder=" e.g Gala"
             className="p-2 text-base  focus:outline-none  bg-white focus:bg-white"
             {...register("occasion", {
-              required: true,
+              required: "Occasion is required",
               minLength: {
                 value: 3,
                 message: "Please add at least 3 characters",
@@ -71,17 +71,17 @@ const router = useRouter();
             })}
           />
 
-          {errors.occasion && <p>{errors.occasion.message}</p>}
+          {errors.occasion && <p className="text-[#2F2D82] text-sm ">{errors.occasion.message}</p>}
         </div>
 
         <div className="flex  items-center  gap-2 p-4 pl-0 flex-wrap">
-          <label htmlFor="destination">Destination</label>
+          <label htmlFor="details">Details</label>
           <input
-            id="destination"
+            id="details"
             type="text"
-            placeholder="e.g. Tarifa"
-            {...register("destination", {
-              required: true,
+            placeholder="e.g. Bring bikini"
+            {...register("details", {
+              required: false,
               minLength: {
                 value: 3,
                 message: "Please add at least 3 characters",
@@ -89,14 +89,14 @@ const router = useRouter();
             })}
             className="p-2 text-base  focus:outline-none"
           />
-            {errors.destination && <p>{errors.destination.message}</p>}
+            {errors.details && <p className="text-[#2F2D82] text-sm">{errors.details.message}</p>}
         </div>
       </div>
       <div className="flex flex-col gap-2 ">
-        <label htmlFor="address">Address</label>
+        <label htmlFor="address">Meeting Point</label>
         <textarea
           {...register("address", {
-            required: true,
+            required: "Address is required",
             minLength: {
               value: 8,
               message: "Please add at least 8 characters",
@@ -107,7 +107,7 @@ const router = useRouter();
           rows="4"
           placeholder="City, Street, ZipCode.."
         ></textarea>
-          {errors.address && <p>{errors.address.message}</p>}
+          {errors.address && <p className="text-[#2F2D82] text-sm">{errors.address.message}</p>}
       </div>
       <div className="flex justify-between flex-wrap">
         {/* <div className="flex  items-center  gap-2 p-4 pl-0 w-full">
@@ -151,9 +151,11 @@ const router = useRouter();
         />
       </div> */}
       </div>
-      <div className="grid place-content-evenly">
-        <button
-          className="bg-black flex hover:bg-neutral-50 hover:text-black  justify-center items-center flex-grow px-6 rounded py-3 hover:ring-4 ring-sky-200 hover:shadow-md  text-green-50  text-center"
+      <div className="grid place-content-evenly ">
+        <button 
+        type="submit"
+        disabled={isSubmitting}
+          className="bg-black flex disabled:bg-gray-400 hover:bg-neutral-50 hover:text-black  justify-center items-center flex-grow px-6 rounded py-3 hover:ring-4 ring-sky-200 hover:shadow-md  text-green-50  text-center"
           
         >
           Add <GoPlus size={25} />

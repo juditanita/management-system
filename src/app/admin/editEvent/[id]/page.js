@@ -33,12 +33,12 @@ const EditEvent = () => {
       </div>
 
       <div className="flex  items-center  gap-2 p-4 pl-0 flex-wrap">
-        <label htmlFor="destination">Destination</label>
+        <label htmlFor="details">Details</label>
         <input
-          id="destination"
+          id="details"
           type="text"
-          placeholder="e.g. Tarifa"
-          name="destination"
+          placeholder="e.g. bring swimming dress"
+          name="details"
           className="p-2 text-base  focus:outline-none"
         //   onChange={setFormData}
         />

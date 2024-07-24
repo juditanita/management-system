@@ -23,10 +23,10 @@ const AllData = () => {
         <thead className="pb-4">
           <tr className="bg-black text-white ">
             <th>Occation</th>
-            <th>Destination</th>
-            <th>Address</th>
+            <th>Details</th>
+            <th>Meeting Point</th>
 
-            <th>Buttons</th>
+            <th>Action Buttons</th>
           </tr>
         </thead>
         <tbody>
@@ -35,11 +35,11 @@ const AllData = () => {
           {events &&
             events.map &&
             events?.map((ev) => {
-              const { occasion, destination, address } = ev;
+              const { occasion, details, address } = ev;
               return (
                 <tr key={ev._id}>
                   <td>{occasion}</td>
-                  <td>{destination}</td>
+                  <td>{details}</td>
                   <td>{address}</td>
 
                   <td>

@@ -5,9 +5,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(req){
     try{
-        const {occasion, destination, address} = await req.json();
+        const {occasion, details, address} = await req.json();
         await dbConnect();
-        await Events.create({occasion, destination, address});
+        await Events.create({occasion, details, address});
     
         return NextResponse.json({
             message:"Events successfully created"

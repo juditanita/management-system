@@ -5,11 +5,11 @@ import { NextResponse } from "next/server";
 export async function PUT(req, {params}){
     const {id} = params;
 
-    const {newOccasion: occasion, newDestination:destination, newAddress:address} = await req.json();
+    const {newOccasion: occasion, newDestination:details, newAddress:address} = await req.json();
 
     await dbConnect();
 
-    await Events.findByIdAndUpdate(id, {occasion, address, destination});
+    await Events.findByIdAndUpdate(id, {occasion, address, details});
     return NextResponse.json({
         message:"event updated"
     }, {status:200})
