@@ -17,7 +17,10 @@ const EditEvent = async ({params}) => {
   console.log(id);
 
 
-  const {data} = await getEventById(id);
+  const data = await getEventById(id);
+  console.log(data);
+  const {address, details, occasion} = data;
+ 
  
   // const [singleEv, setSingleEvent] = useState(null);
 
@@ -50,8 +53,8 @@ const EditEvent = async ({params}) => {
         </Link>
       </div>
 
-      {/* {singleEv && <p>here comes the truth {singleEv.details}</p>} */}
-      <EditForm />
+      
+      <EditForm id={id} details={details} address={address} occasion={occasion}/>
     </section>
   );
 };
