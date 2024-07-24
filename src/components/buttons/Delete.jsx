@@ -5,14 +5,14 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Delete = ({ id }) => {
   const removeEvent = async () => {
-    console.log("its is clicked");
+    // console.log("its is clicked");
     const confirmed = confirm("Are you sure you want to delete it?");
 
     if (confirmed) {
       const res = await fetch(`http://localhost:3000/api/events?id=${id}`, {
         method: "DELETE",
       });
-      console.log(res);
+      // console.log(res);
       if (res.ok) {
         setTimeout(() => {
           window.location.reload();

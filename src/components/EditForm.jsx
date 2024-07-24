@@ -1,24 +1,14 @@
 'use client'
-import { useReducer } from "react";
-import { formReducer } from "@/allFunctions";
-import { GoPlus } from "react-icons/go";
 
-const Form = () => {
+import { CiEdit } from "react-icons/ci";
 
-    const [formData, setFormData] = useReducer(formReducer, {});
+const EditForm = () => {
 
-    function handleSubmit(event) {
-      event.preventDefault();
-      console.log(formData);
-      if(Object.keys(formData).length == 0){
-        return (console.log("no form Data"))
-      }
-     
-    }
+  
   return (
     <form
     action=""
-    className="bg-sky-600 shadow-md  p-4 w-1/2 mx-auto mb-20 mt-12 gap-6 flex flex-col"
+    className="bg-indigo-100 shadow-md  p-4 w-1/2 mx-auto mb-20 mt-12 gap-6 flex flex-col"
   >
     <div className="flex justify-between  flex-col lg:flex-row">
       <div className="flex flex-wrap  items-center  gap-2 p-4 pl-0 ">
@@ -29,19 +19,19 @@ const Form = () => {
           name="occasion"
           placeholder="e.g.day trip"
           className="p-2 text-base  focus:outline-none  bg-white focus:bg-white"
-          onChange={setFormData}
+         
         />
       </div>
 
       <div className="flex  items-center  gap-2 p-4 pl-0 flex-wrap">
-        <label htmlFor="destination">Destination</label>
+        <label htmlFor="details">Details</label>
         <input
-          id="destination"
+          id="details"
           type="text"
-          placeholder="e.g. Tarifa"
-          name="destination"
+          placeholder="e.g. all inclusive"
+          name="details"
           className="p-2 text-base  focus:outline-none"
-          onChange={setFormData}
+        
         />
       </div>
     </div>
@@ -53,7 +43,7 @@ const Form = () => {
         className="p-2 resize-none text-base  focus:outline-none"
         rows="4"
         placeholder="City, Street, ZipCode.."
-        onChange={setFormData}
+       
       ></textarea>
     </div>
     <div className="flex justify-between flex-wrap">
@@ -102,13 +92,13 @@ const Form = () => {
     
       <button
         className="bg-black flex hover:bg-neutral-50 hover:text-black  justify-center items-center flex-grow px-6 rounded py-3 hover:ring-4 ring-sky-200 hover:shadow-md  text-green-50  text-center"
-        onClick={handleSubmit}
+       
       >
-        Add <GoPlus size={25}/>
+        Edit <CiEdit size={25}/>
       </button>
     </div>
   </form>
   )
 }
 
-export default Form
+export default EditForm

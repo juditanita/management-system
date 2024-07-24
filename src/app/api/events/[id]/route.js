@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function PUT(req, {params}){
     const {id} = params;
 
-    const {newOccasion: occasion, newDestination:details, newAddress:address} = await req.json();
+    const {newOccasion: occasion, newDetails:details, newAddress:address} = await req.json();
 
     await dbConnect();
 
@@ -21,7 +21,7 @@ export async function GET(req, {params}){
     const {id} = params;
 
     await dbConnect();
-    const singleEvent = await Events.findOne({_id:id});
+    const res = await Events.findOne({_id:id});
 
-    return NextResponse.json({singleEvent},{status:200});
+    return NextResponse.json(res,{status:200});
 }
