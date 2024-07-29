@@ -1,6 +1,6 @@
 "use client";
 
-import ToolTips from "./ToolTips";
+
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Delete = ({ id }) => {
@@ -21,14 +21,19 @@ const Delete = ({ id }) => {
     }
   };
   return (
-    <ToolTips text={"delete"}>
+    <button className="btn btn-outline btn-accent">
       <RiDeleteBin6Line
         size={25}
         color={"rgba(245, 0, 1, 0.8)"}
         onClick={removeEvent}
       />
-    </ToolTips>
+    </button>
+
+    
+
+
   );
+
 };
 
 export default Delete;
