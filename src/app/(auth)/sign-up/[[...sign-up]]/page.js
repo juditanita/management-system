@@ -1,9 +1,14 @@
-import React from 'react'
+import { SignUp } from "@clerk/nextjs";
 
-const SignUp = () => {
-  return (
-    <div>SignUp</div>
-  )
+export default function Page() {
+  return  <>
+  <SignUp
+     appearance={{
+      elements: {
+        formButtonPrimary: "bg-orange-400 border-2 ",
+      },
+    }}
+  
+  />
+</>;
 }
-
-export default SignUp

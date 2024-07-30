@@ -1,9 +1,17 @@
-import React from 'react'
+import { SignIn } from '@clerk/nextjs';
 
-const SignIn = () => {
+const SignInPage = () => {
   return (
-    <div>SignIn</div>
-  )
-}
-
-export default SignIn
+   <>
+      <SignIn
+         appearance={{
+          elements: {
+            formButtonPrimary: "bg-orange-400 border-2 ",
+          },
+        }}
+      
+      />
+    </>
+  );
+};
+export default SignInPage;
