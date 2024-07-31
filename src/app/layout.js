@@ -1,9 +1,10 @@
 
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { ClerkProvider,   ClerkLoading, ClerkLoaded} from "@clerk/nextjs";
 import Header from "@/components/Header";
-import Link from "next/link";
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,20 +18,16 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
     <html lang="en" data-theme="cupcake">
    <body>
-     <header className="flex p-4 mx-auto w-full  bg-blue-700 justify-between">
-        <Header/>
-   <SignedOut>
-    <Link href={"/sign-in"}>
 
-     <button className=" bg-orange-400 text-xl rounded-2xl px-4 py-2 btn btn-ghost text-white">Sign In</button>
-
-       </Link>
-   </SignedOut>
-   <SignedIn>
-     <UserButton />
-   </SignedIn>
-   </header>
-     {children}</body>
+    <ClerkLoading>
+    <div class="loader"></div>
+    </ClerkLoading>
+  <Header/>
+   
+   <ClerkLoaded>
+     {children}
+     </ClerkLoaded>
+     </body>
    </html>
  </ClerkProvider>
   );

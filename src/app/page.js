@@ -4,8 +4,9 @@ export default function Home() {
   return (
     <main data-theme="cupcake"
     
-    className="flex min-h-screen  flex-col items-center justify-between p-24">
+    className="flex   flex-col items-center justify-between p-24">
   
+hello
 
     
 

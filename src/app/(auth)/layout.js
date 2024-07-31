@@ -2,7 +2,7 @@
 
 const Layout = ({children}) => {
   return (
-    <section className='w-full  mx-auto flex items-center  justify-center mt-10'>
+    <section className='w-full  mx-auto flex items-center  justify-center my-10'>
         
         {children}</section>
   )
