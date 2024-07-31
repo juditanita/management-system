@@ -8,10 +8,11 @@ const Header = () => {
     <header className="flex p-4 mx-auto w-full  bg-blue-700 justify-between px-12">
     
       <Link href={"/"}>  <span className="text-slate-50">Pinky Events</span></Link>
+      <Link href={"/profile"}>  <span className="text-slate-50">Profile</span></Link>
       
     
       {!userId ?( <div className="flex gap-6 items-center">
-        <Link href={"/client"}>  <span className="text-slate-50">Client Page</span></Link>
+       
         <div className="flex gap-6"><Link href={"/sign-in"}>  <span className="text-slate-50">Login</span></Link>
         <Link href={"/sign-up"}>  <span className="text-slate-50">Sign-up</span></Link></div>
     
@@ -19,7 +20,8 @@ const Header = () => {
 
     </div>):(
       <>
-    <Link href={"/dashboard"}>  <span className="text-slate-50">Dashboard</span></Link>
+    <Link href={"/userEvents"}>  <span className="text-slate-50">My Events</span></Link>
+    <Link href={"/client"}>  <span className="text-slate-50">Client Page</span></Link>
     <SignedIn>
         <UserButton />
       </SignedIn>
