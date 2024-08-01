@@ -1,12 +1,12 @@
 
-import { Inter } from "next/font/google";
+import { EB_Garamond} from "next/font/google";
 import "./globals.css";
 import { ClerkProvider,   ClerkLoading, ClerkLoaded} from "@clerk/nextjs";
 import Header from "@/components/Header";
 
 
 
-const inter = Inter({ subsets: ["latin"] });
+const ebGaramond = EB_Garamond({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
     <html lang="en" data-theme="cupcake">
-   <body>
+   <body className={ebGaramond.className}>
 
     <ClerkLoading>
     <div class="loader"></div>

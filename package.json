@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/nextjs": "^5.2.8",
     "@clerk/themes": "^2.1.14",
+    "css-loader": "^7.1.2",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.1",
     "next": "14.2.5",
